@@ -1,4 +1,5 @@
 from arduino import *
+from adafruit_ssd1306 import *
 
 SCREEN_WIDTH=const(128)
 SCREEN_HEIGHT=const(32)
