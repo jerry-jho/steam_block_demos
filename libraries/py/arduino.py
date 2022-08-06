@@ -16,6 +16,10 @@ def digitalWrite(pin, val):
     p = Pin(pin, Pin.OUT)
     p.value(val)
 
+def digitalRead(pin):
+    p = Pin(pin, Pin.IN)
+    return p.value()
+
 def delay(ms):
     time.sleep_ms(ms)
 

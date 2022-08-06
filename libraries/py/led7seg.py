@@ -32,6 +32,8 @@ class LED7SEG595:
         b = [self.digital_table[10] for _ in range(N)]
         if self.v is not None:
             v = int(self.v)
+            if v < 0:
+                v = 0
             for i in range(N):
                 b[i] = self.digital_table[v % 10]
                 v //= 10
