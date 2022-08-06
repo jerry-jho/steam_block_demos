@@ -1,5 +1,5 @@
 from espboard import *
-from machine import Pin,SoftI2C
+from machine import Pin,ADC
 import machine
 import time
 
@@ -16,9 +16,19 @@ def digitalWrite(pin, val):
     p = Pin(pin, Pin.OUT)
     p.value(val)
 
+__ANA_PIN__ = {}
+
 def digitalRead(pin):
+    __ANA_PIN__[pin] = None
     p = Pin(pin, Pin.IN)
     return p.value()
+
+def analogRead(pin):
+    p = __ANA_PIN__.get(pin, None)
+    if p is None:
+        p = ADC(Pin(pin))
+        __ANA_PIN__[pin] = p
+    return p.read()
 
 def delay(ms):
     time.sleep_ms(ms)

@@ -13,7 +13,6 @@ class LED7SEG595:
         self.sspi = SoftSPI(MOSI, MISO, SCK)
         self.LT = LT
         self.v = None
-        self.delay = 5
         self.timer_id = timer_id
 
     def begin(self):
@@ -41,7 +40,7 @@ class LED7SEG595:
             digitalWrite(self.LT, LOW)
             self.sspi.transfer(b[i], self.digital_select[i])
             digitalWrite(self.LT, HIGH)
-            delay(self.delay)
+            delay(3)
 
 
 if __name__ == '__main__':

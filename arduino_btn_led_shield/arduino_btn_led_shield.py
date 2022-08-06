@@ -11,7 +11,6 @@ class shield:
         self.__timer = Timer(timer_id)
         self.__timer.init(period=20, mode=Timer.PERIODIC, callback=self.__loop__)
         self.__last_key = [1, 1, 1]
-        self.__last_aval = 0
         self.begin()
 
     def begin(self):
@@ -20,7 +19,7 @@ class shield:
     def __loop__(self, *s):
         for i, k in enumerate(self.__KEYPIN__):
             kv = digitalRead(k)
-            if (kv != self.__last_key[i]):
+            if kv != self.__last_key[i]:
                 self.onKeyInput(i, kv)
                 self.__last_key[i] = kv
         self.__led7seg.loop()
@@ -65,17 +64,6 @@ digitalWrite(D13, LOW)
 digitalWrite(D12, LOW)
 digitalWrite(D11, LOW)
 digitalWrite(D10, LOW)
-# digitalWrite(D9, LOW)
-# digitalWrite(D8, LOW)
-# digitalWrite(D7, LOW)
-# digitalWrite(D6, LOW)
-# digitalWrite(D5, LOW)
-# digitalWrite(D4, LOW)
-# digitalWrite(D3, LOW)
-# digitalWrite(D2, LOW)
-# digitalWrite(D1, LOW)
-# digitalWrite(D0, LOW)
-
 
 app = MyApp()
 
